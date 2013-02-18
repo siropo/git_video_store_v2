@@ -225,6 +225,7 @@ function loginSuccess(user, pass, rentedMovies) {
 }
 
 function loginUserDisplay(user, rentMovie) {
+    $("#login-div").css("height", "auto");
     isReturnFormVisible = false;
     $("#rent-show-hide-field").css("visibility","hidden");
     $("#return-movie-div").fadeOut(60);
@@ -278,15 +279,17 @@ function  logoutHandler() {
         isMovieRented = false;
         loginUser = null;
         isLoginUser = false;
+
         $("#login-result").fadeOut().css("visibility","hidden");
         if (requestGET.option == "movieInfo") {
             requestGET.getAjaxData();
         }
-
-        $("#return-movie-div").fadeIn();
-        $("#login-form").fadeIn();
+        $("#login-div").css("height", "140");
+        $("#login-form").fadeIn(40);
+        $("#return-movie-div").fadeIn(500);
+        
         $('#show-register-form').show();
-        $('#register-div').show(); 
+
     });
 }
 

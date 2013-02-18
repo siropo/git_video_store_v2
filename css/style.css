@@ -568,7 +568,7 @@ main-content																						*/
     }
 
     #return-movie-div, #login-div {
-        min-height: 140px;
+        height: 140px;
         position: relative;
         padding: 10px 10px 10px 12px;
     }
