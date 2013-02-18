@@ -254,7 +254,6 @@ function loginUserDisplay(user, rentMovie) {
     } else {
         rentedMoviesHTML += '<li>You dont rent any movies </li>'; 
     }
-    
 
     rentedMoviesHTML += '</ul>';
 
@@ -265,7 +264,6 @@ function loginUserDisplay(user, rentMovie) {
             ' <a href="#" id="logout-btn" class="msg-button">Logout</a>' +
         '</div>'
     );
-
     
     // Logout handler 
     logoutHandler();
@@ -329,8 +327,6 @@ function checkMovieIsRented(user, movieId) {
 
     return false;
 }
-
-
 
 function fixFooterHeight() {
     var windowSize = $(window).height();
