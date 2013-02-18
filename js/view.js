@@ -64,7 +64,10 @@ var movieInfoHTML = {
 			        var dataArr = data.categories[i];
 			        dataHTML += '<a href="#' + dataArr.name + '" data-id="' + dataArr.id + '" class="category-info">' + dataArr.name + '</a> | ';
 			    }
-			    dataHTML += '</li>';
+				    dataHTML += '</li>' +
+				   				'<li>' +
+				                    '<span class="description"><span class="additional-text">Movie id:</span> ' + data.id + '</span>' +
+				            	'</li>';
 			    dataHTML += '</ul>';
 			    
 			    dataHTML += '<div class="form-holder-rent">' +

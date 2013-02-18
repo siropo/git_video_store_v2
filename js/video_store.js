@@ -156,9 +156,9 @@ function init() {
 
     // Login Handler
     addEventHandler(loginBtn, "click", function() {
-            var loginData = new Data("login");
-                loginData.collect(collectDataLogin[0] , collectDataLogin[1], collectDataLogin[2]);  
-        } , false);
+        var loginData = new Data("login");
+            loginData.collect(collectDataLogin[0] , collectDataLogin[1], collectDataLogin[2]);  
+    } , false);
 
     // Register button handler
     $('#show-register-form').click(function() {
@@ -218,7 +218,7 @@ function succesMessage(message, option) {
 function loginSuccess(user, pass, rentedMovies) {
 
     isLoginUser = true;
-
+    // Create object for login user
     loginUser = new LoginUserLocal(user, pass, rentedMovies);
     loginUserDisplay(loginUser.user, loginUser.rentMovie);
 
@@ -238,7 +238,7 @@ function loginUserDisplay(user, rentMovie) {
                 '<input type="hidden" value="' + loginUser.user + '" id="rent-movie-username" />' +
                 '<input type="hidden" value="' + loginUser.pass + '" id="rent-movie-password" />'
         );
-
+        // Refresh display-container
         requestGET.getAjaxData();
     }
     

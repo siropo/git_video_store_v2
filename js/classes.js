@@ -1,3 +1,4 @@
+// Class for collecting data and check it
 function Data(option) {
     this.dataOption = option;
 }
@@ -82,8 +83,6 @@ function AjaxRequest(requestUrl, ajaxMethod, toAppend, parseToHTML, option) {
     this.toAppend = toAppend;
     this.parseToHTML = parseToHTML;
     this.option = option;
-    this.returnMovieDeleteLocal = 0;
-    this.returnServerData = null;
 }
 
 
@@ -134,7 +133,7 @@ AjaxRequest.prototype.onSuccess = function(ajaxData, method) {
     if (method === "GET") {
         
         if (this.option != "getAllvideoStoreLen") {
-
+            // Append data returned from server
             this.displayAjaxData(ajaxData);
 
             if (this.option == "videoStoreByPage") {
@@ -162,20 +161,20 @@ AjaxRequest.prototype.onSuccess = function(ajaxData, method) {
             this.message = 'Register success';
         } else if (option == "rent") {
             this.message = 'Rent movie with id ' + this.idMovie + ' success';
+            // Refresh loginbar if user is login
             if (isLoginUser) {
                 loginPOST.postAjaxData();
             }
         } else if (option == "return") {
             this.message = 'Return movie with id ' + this.idMovie + ' success';
+            // Refresh loginbar if user is login
             if (isLoginUser) {
                 loginPOST.postAjaxData();
             }
         } else if (option == "rented-movies") {
             this.message = 'Return movie with id ' + this.idMovie + ' success';
         } else if (option == "login-user-rented-movies") {
-            var cryptPass = cryptPassword(this.user + this.pass);
-            loginSuccess(this.user, cryptPass, ajaxData);
-        } else if (option == "login-user-rented-movies") {
+            // Successing login user
             var cryptPass = cryptPassword(this.user + this.pass);
             loginSuccess(this.user, cryptPass, ajaxData);
         }
@@ -195,12 +194,11 @@ AjaxRequest.prototype.onErrorRequest = function(jqXHR, textStatus, errorThrow) {
         error = jQuery.parseJSON(jqXHR.responseText);
         error = error.Message;
         if (option == "loginByRent" && error == "No such movie") {
-            
+            // If error from server is "No such movie" then user exist and login
             loginPOST = new AjaxRequest(rentedMovies.url(), rentedMovies.ajaxMethod, 
                        rentedMovies.toAppend, "", "login-user-rented-movies");
             loginPOST.collect(collectDataLogin[0], collectDataLogin[1], collectDataLogin[2]);
             loginPOST.postAjaxData();
-            isLoginUser = true;
         } else if (option == "loginByRent" && error != "No such movie") {
             errorMessage("Username or password dont match!", "login");
         }
