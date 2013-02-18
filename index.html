@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Video store</title>
+		<meta charset="utf-8" />
+		<meta name="author" content="Viktor Ivanov" />
+		<meta name="description" content="description"/>
+		<meta name="keywords" content="keywords" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+		<script src="js/xdr.js"></script>
+		<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+		
+		<!--[if lte IE 8]>
+			<link rel="stylesheet" type="text/css" href="css/ie_style.css" media="screen" />
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<script>
+			if ($.browser.msie && $.browser.version == 10) {
+			 	 document.write('<link rel="stylesheet" type="text/css" href="css/ie_global.css" media="screen" />');
+			}
+		</script>
+
+	</head>
+	<body>
+		<div id="top-nav-bar">
+			<nav id="top-navi"> 
+				<ul class="clear">
+					<li class="right"><a href="#" id="show-register-form" class="msg-button">Register</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div id="wrapper-main">
+			<header id="header">
+				<div class="clear">
+					<a href="#" id="logo" class="left" title="Video Store logo"><img src="img/logo.png" width="117" height="65" /></a>
+					<div id="register-div" class="right">
+						<form id="register-form">
+							<label for="tb-username" class="clear">
+								<div class="field-name left">Username:</div><div class="left"><input type="text" value="" id="tb-username" /></div>
+							</label>
+							<label for="tb-password" class="clear">
+								<div class="field-name left">Password:</div><div class="left"><input type="password" value="" id="tb-password" /></div>
+							</label>
+							<input type="button" id="register-btn" class="right button green" value=" Register " />
+						</form>
+						<div id="register-result" class="hide-elem">
+
+						</div>
+					</div>
+				</div>
+				<nav id="main-navi"> 
+					<ul class="clear">
+						<li class="first-menu-item"><a href="#" id="videoStore-by-page-btn">Home</a></li>
+						<li><a href="#" id="categories-btn">Categories</a></li>
+						<li class="last-menu-item"><a href="#" id="actors-btn">Actors</a></li>
+					</ul>
+				</nav>
+			</header>
+			
+			<div id="wrapper-content" class="clear">
+				<div id="content" class="left">
+					<h2 id="content-header-title">Video Store</h2>
+					<div class="container-holder">
+						<div class="display-container">
+							
+						</div>
+					</div>
+				</div>
+				<aside id="sidebar" class="left">
+
+					<div id="login-div" class="clear">
+						<div class="form-holder-login">
+							<h3 class="login-title">Login </h3>
+							<form id="login-form">
+								<label for="login-username" class="clear">
+									<div class="field-name left">Username:</div><div class="left"><input type="text" value="" id="login-username" /></div>
+								</label>
+								<label for="login-password" class="clear">
+									<div class="field-name left">Password:</div><div class="left"><input type="password" value="" id="login-password" /></div>
+								</label>
+								<input type="button" id="login-btn" class="right button green" value=" Login " />
+							</form>
+							<div id="login-result" class="hide-elem">
+
+							</div>
+						</div>
+					</div>
+
+					<div class="form-holder-return">
+						<div id="return-movie-div" class="clear">
+							<h3 class="return-movie-title">Return movie</h3>
+							<form id="return-form">
+								<label for="return-movie-id" class="clear">
+									<div class="field-name left">Movie id:</div><div class="left"><input type="text" value="" id="return-movie-id" /></div>
+								</label>
+								<label for="return-movie-username" class="clear">
+									<div class="field-name left">Username:</div>
+	 <div class="left"><input type="text" value="" id="return-movie-username" /></div>
+
+								</label>
+								<label for="return-movie-password" class="clear">
+									<div class="field-name left">Password: </div>
+	<div class="left"><input type="password" value="" id="return-movie-password" /></div>
+								</label>
+								<input type="button" id="return-movie-btn" class="right button green" value=" Return movie " />
+							</form>
+							<div id="return-result" class="hide-elem">
+								
+							</div>
+						</div>
+					</div>
+					<!--
+					<div id="rented-movies-div" class="clear">
+						<div class="form-holder-rented-movies">
+							<h3 class="rented-movies-title">Login </h3>
+							<form id="rented-movies-form">
+								<label for="rented-movies-username" class="clear">
+									<div class="field-name left">Username:</div><div class="left"><input type="text" value="" id="rented-movies-username" /></div>
+								</label>
+								<label for="rented-movies-password" class="clear">
+									<div class="field-name left">Password:</div><div class="left"><input type="password" value="" id="rented-movies-password" /></div>
+								</label>
+								<input type="button" id="rented-movies-btn" class="right button green" value=" Login " />
+							</form>
+							<div id="rented-movies-result" class="hide-elem">
+
+							</div>
+						</div>
+					</div>
+					-->
+				</aside>
+			</div>
+		</div>
+		<footer id="footer">
+				<section class="footer-group clear">
+					<nav class="right">
+						<ul>
+							<li>Telerik academy javascript practical project Video Store</li>
+						</ul>
+					</nav>
+				</section>
+		</footer>
+		<script src="js/ajax_requests.js"></script>
+		<script src="js/view.js"></script>
+		<script src="js/classes.js"></script>
+		<script src="js/video_store.js"></script>
+	</body>
+</html>
