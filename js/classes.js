@@ -165,7 +165,6 @@ AjaxRequest.prototype.onSuccess = function(ajaxData, method) {
             if (isLoginUser) {
                 loginPOST.postAjaxData();
             }
-            
         } else if (option == "return") {
             this.message = 'Return movie with id ' + this.idMovie + ' success';
             if (isLoginUser) {
@@ -202,7 +201,7 @@ AjaxRequest.prototype.onErrorRequest = function(jqXHR, textStatus, errorThrow) {
             loginPOST.collect(collectDataLogin[0], collectDataLogin[1], collectDataLogin[2]);
             loginPOST.postAjaxData();
             isLoginUser = true;
-        } else {
+        } else if (option == "loginByRent" && error != "No such movie") {
             errorMessage("Username or password dont match!", "login");
         }
     } 
