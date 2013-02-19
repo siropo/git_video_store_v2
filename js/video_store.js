@@ -82,6 +82,7 @@ var collectDataRentMovie
 var loginUser = null;
 var isLoginUser = false;
 var isMovieRented = false;
+var isLoginUserRentMovies = false;
 
 // Variable fix for display return movie form and loading image
 var isReturnFormVisible = true;
@@ -225,6 +226,7 @@ function loginSuccess(user, pass, rentedMovies) {
 }
 
 function loginUserDisplay(user, rentMovie) {
+    requestGET.getAjaxData();
     $("#login-div").css("height", "auto");
     isReturnFormVisible = false;
     $("#rent-show-hide-field").css("visibility","hidden");
@@ -247,12 +249,14 @@ function loginUserDisplay(user, rentMovie) {
     var rentMoviesLength = rentMovie.length;
 
     if (rentMoviesLength > 0) {
+        isLoginUserRentMovies = true;
         rentedMoviesHTML += '<li>Your rented movies </li>'; 
         for (var i = 0; i < rentMovie.length; i++) {
-            rentedMoviesHTML += '<li><span class="movie-name">' + rentMovie[i].title + "</span>" + 
+            rentedMoviesHTML += '<li><span class="movie-name"><a href="#' + rentMovie[i].title + '" data-id="' + rentMovie[i].id + '" class="movie-info login-user-rent">' + rentMovie[i].title + "</a></span>" + 
             '<a href="#" data-movieid="' + rentMovie[i].id + '" data-arrid="' + i + '" class="login-return-movie small-button red">return</a></li>';
         } 
     } else {
+        isLoginUserRentMovies = false;
         rentedMoviesHTML += '<li>You dont rent any movies </li>'; 
     }
 

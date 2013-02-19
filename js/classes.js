@@ -133,6 +133,7 @@ AjaxRequest.prototype.onSuccess = function(ajaxData, method) {
     if (method === "GET") {
         
         if (this.option != "getAllvideoStoreLen") {
+
             // Append data returned from server
             this.displayAjaxData(ajaxData);
 
