@@ -182,7 +182,7 @@ function errorMessage(error, option) {
     $("#" + option + "-form").fadeOut(60);
     $("#" + option + "-result").css("visibility","visible").hide().fadeIn("slow").html(
         '<div class="error-msg">' + error + 
-            ' <a href="#" id="' + option + '-result-btn" class="msg-button">ok</a>' +
+            ' <input type="button" href="#" id="' + option + '-result-btn" class="msg-button" value="ok">' +
         '</div>'
         );
 
@@ -201,7 +201,7 @@ function succesMessage(message, option) {
     $("#" + option + "-form").fadeOut(60);
         $("#" + option + "-result").css("visibility","visible").hide().fadeIn("slow").html(
             '<div class="success-msg">' + message +
-                ' <a href="#" id="' + option + '-result-btn" class="msg-button">ok</a>' +
+                ' <input type="button" id="' + option + '-result-btn" class="msg-button" value="ok">' +
             '</div>'
         );
 
@@ -226,14 +226,25 @@ function loginSuccess(user, pass, rentedMovies) {
 }
 
 function loginUserDisplay(user, rentMovie) {
-    requestGET.getAjaxData();
-    $("#login-div").css("height", "auto");
+
+    var startLogin = true;
+
+    if (startLogin == true) {
+        //Refresh display-container
+        requestGET.getAjaxData();
+        startLogin = false;
+    }
+    
     isReturnFormVisible = false;
+
+    $("#login-div").css("height", "auto");
     $("#rent-show-hide-field").css("visibility","hidden");
     $("#return-movie-div").fadeOut(60);
     $('#show-register-form').hide();
     $('#register-div').hide();
     $('.login-title').text("Wellcome");
+    $(".form-holder-return").css("height", "auto");
+        
 
     if (requestGET.option == "movieInfo") {
         
@@ -253,7 +264,7 @@ function loginUserDisplay(user, rentMovie) {
         rentedMoviesHTML += '<li>Your rented movies </li>'; 
         for (var i = 0; i < rentMovie.length; i++) {
             rentedMoviesHTML += '<li><span class="movie-name"><a href="#' + rentMovie[i].title + '" data-id="' + rentMovie[i].id + '" class="movie-info login-user-rent">' + rentMovie[i].title + "</a></span>" + 
-            '<a href="#" data-movieid="' + rentMovie[i].id + '" data-arrid="' + i + '" class="login-return-movie small-button red">return</a></li>';
+            '<input type="button" data-movieid="' + rentMovie[i].id + '" data-arrid="' + i + '" class="login-return-movie small-button red" value="return"></li>';
         } 
     } else {
         isLoginUserRentMovies = false;
@@ -266,7 +277,7 @@ function loginUserDisplay(user, rentMovie) {
     $("#login-result").css("visibility","visible").hide().fadeIn("slow").html(
         '<div class="success-msg"><span class="user">User: ' + user + ' </span>' +
             rentedMoviesHTML + 
-            ' <a href="#" id="logout-btn" class="msg-button">Logout</a>' +
+            ' <input type="button" id="logout-btn" class="msg-button" value=" logout " />' +
         '</div>'
     );
     
@@ -291,7 +302,7 @@ function  logoutHandler() {
         $("#login-div").css("height", "140");
         $("#login-form").fadeIn(40);
         $("#return-movie-div").fadeIn(500);
-        
+        $(".form-holder-return").css("height", "200px");
         $('#show-register-form').show();
 
     });
