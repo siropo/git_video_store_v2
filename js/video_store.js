@@ -227,13 +227,8 @@ function loginSuccess(user, pass, rentedMovies) {
 
 function loginUserDisplay(user, rentMovie) {
 
-    var startLogin = true;
-
-    if (startLogin == true) {
-        //Refresh display-container
-        requestGET.getAjaxData();
-        startLogin = false;
-    }
+    //Refresh display-container
+    requestGET.getAjaxData();
     
     isReturnFormVisible = false;
 
