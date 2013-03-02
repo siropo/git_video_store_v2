@@ -146,10 +146,15 @@ AjaxRequest.prototype.onSuccess = function(ajaxData, method) {
                 allvideoStores.optionsDisplay.rentMovie();
             }
 
+            if (this.option == "allvideoStores" || this.option == "categoryInfo" ||
+                this.option == "actorsInfo") {
+                allvideoStores.optionsDisplay.movieInfo();
+            }
+
             allvideoStores.optionsDisplay.videostoreInfo();
-            allvideoStores.optionsDisplay.movieInfo();
             categories.optionsDisplay.categoryInfo();
             actors.optionsDisplay.actorInfo();
+
         } else {
             // Get all length on video stores
             allvideoStoresLenght = ajaxData.length;

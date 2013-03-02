@@ -90,6 +90,7 @@ var isReturnFormVisible = true;
 // Variables for current Ajax request
 var requestGET;
 var requestPOST;
+var loginPOST;
 
 // addEventListener
 function addEventHandler(oNode, sEvt, fFunc, bCaptures) {
@@ -247,17 +248,19 @@ function loginUserDisplay(user, rentMovie) {
                 '<input type="hidden" value="' + loginUser.user + '" id="rent-movie-username" />' +
                 '<input type="hidden" value="' + loginUser.pass + '" id="rent-movie-password" />'
         );
-        // Refresh display-container
-        requestGET.getAjaxData();
     }
     
+
+        
+    
+
     var rentedMoviesHTML = '<ul class="rented-movies">';
     var rentMoviesLength = rentMovie.length;
 
     if (rentMoviesLength > 0) {
         isLoginUserRentMovies = true;
         rentedMoviesHTML += '<li>Your rented movies </li>'; 
-        for (var i = 0; i < rentMovie.length; i++) {
+        for (var i = 0; i < rentMoviesLength; i++) {
             rentedMoviesHTML += '<li><span class="movie-name"><a href="#' + rentMovie[i].title + '" data-id="' + rentMovie[i].id + '" class="movie-info login-user-rent">' + rentMovie[i].title + "</a></span>" + 
             '<input type="button" data-movieid="' + rentMovie[i].id + '" data-arrid="' + i + '" class="login-return-movie small-button red" value="return"></li>';
         } 
@@ -275,6 +278,8 @@ function loginUserDisplay(user, rentMovie) {
             ' <input type="button" id="logout-btn" class="msg-button" value=" logout " />' +
         '</div>'
     );
+
+    allvideoStores.optionsDisplay.movieInfo();
     
     // Logout handler 
     logoutHandler();

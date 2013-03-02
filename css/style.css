@@ -54,16 +54,14 @@ Globals
     src: url("fonts/Sansation_Light.ttf") format("truetype"); 
 } 
 
-body
-{
+body {
     background: #1a1b1d;
     font: normal normal 62.5% Verdana, helvetica, sans-serif;
     line-height: 1;
     color: #fff;
 }
 
-#wrapper-main
-{
+#wrapper-main {
     position: relative;
     margin: auto;
     width: 988px;
